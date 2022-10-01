@@ -11,6 +11,11 @@ app.use(express.static(publicDirectoryPath));
 app.get('', (req, res) => {
     res.render('index');
 })
+
+app.get('/hello', (req, res) => {
+    res.render('hello')
+})
+
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 })
