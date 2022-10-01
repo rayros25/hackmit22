@@ -1,21 +1,36 @@
-.flower {
-  width: 20%;
-  height: auto;
+html, body {
+  height: 100%;
+  width: 100%;
 }
 
-div {
+.flashcard {
 box-sizing: border-box;
-
-position: absolute;
-width: 50%;
-height: 50%;
+align-content: center;
+width: 600px;
+height: 400px;
 
 background: #FFFFFF;
-border: 4px solid #0094FF;
+border: 10px solid #0094FF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 36px;
 }
 
 .flashcard_content {
   text-align: center;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+span {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+table {
+  border-style: solid;
+  border-color: black;
+  width: 90%;
+  height: 80%;
+  
 }
