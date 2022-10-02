@@ -47,7 +47,7 @@ fileUploadForm.addEventListener('submit', async (e) => {
     const result = await file.text();
     parsed_words = parse(result);
     numItemsLeft = parsed_words.length;
-    flashcardText.innerHTML = 'Filed uploaded and ready! Click me to start!'
+    flashcardText.innerHTML = 'File uploaded and ready! Click me to start!'
 })
 
 const parse = (words_from_file) => {
@@ -100,6 +100,7 @@ const getNewCard = () => {
 
 function cardCorrect() {
     console.log("num items left: " + numItemsLeft);
+    console.log('user says: right')
     if (hasBeenFlipped) {
         cardsCorrect++;
         numItemsLeft--;
@@ -110,9 +111,15 @@ function cardCorrect() {
 }
 yesButton.addEventListener("click", cardCorrect);
 document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") {
-        // console.log("hit right");
+    if (e.key === "k" || e.key === "ArrowRight") {
         cardCorrect();
+    }
+    else if (e.key === "j" || e.key === "ArrowLeft") {
+        console.log('user says: wrong')
+        numItemsLeft--;
+        if (hasBeenFlipped) {
+            getNewCard();
+        }
     }
 });
 
