@@ -2,6 +2,7 @@ const fileUploadForm = document.querySelector('form');
 const fileUploadWidget = document.querySelector('input');
 const yesButton = document.getElementsByClassName('bt_y')[0];
 const noButton = document.getElementsByClassName('bt_n')[0];
+const flowerZone = document.getElementsByClassName('flower')[0];
 const flashcardText = document.getElementsByClassName('flashcard_content')[0];
 const flashcardBox = document.getElementsByClassName('flashcard')[0];
 
@@ -23,14 +24,7 @@ fileUploadForm.addEventListener('submit', async (e) => {
     const result = await file.text();
     parsed_words = parse(result);
 
-    console.log(parsed_words);
-    // parse(words_from_file, {
-    //     delimiter: '    '
-    // }, function(err, parsed_result) {
-    //     console.log(parsed_result);
-    // })
-
-    // console.log(big_mood)
+    flashcardText.innerHTML = 'Filed uploaded and ready! Click me to start!'
 })
 
 const parse = (words_from_file) => {
@@ -80,6 +74,7 @@ noButton.onclick = () => {
     if (hasBeenFlipped) {
         getNewCard();
     }
+    flowerZone.setAttribute('src', '../images/bird3.png')
 }
 
 flashcardBox.onclick = () => {
