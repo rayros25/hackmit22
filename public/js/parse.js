@@ -1,12 +1,15 @@
 const fileUploadForm = document.querySelector('form');
 const fileUploadWidget = document.querySelector('input');
 const yesButton = document.getElementsByClassName('bt_y')[0];
+const noButton = document.getElementsByClassName('bt_n')[0];
 const flashcardText = document.getElementsByClassName('flashcard_content')[0];
 const flashcardBox = document.getElementsByClassName('flashcard')[0];
 
 let parsed_words = [];
 let curr = 0;
-let which_side = 1;
+let which_side = 0;
+let hasStarted = false;
+let hasBeenFlipped = false;
 
 fileUploadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -57,14 +60,36 @@ const flipCard = () => {
 
 //     console.log('YES PRESSED')
 // })
-yesButton.onclick = () => {
+
+const getNewCard = () => {
     if (parsed_words.length != 0) {
+        flipCard();
         curr = randIndex();
         flashcardText.innerHTML = parsed_words[curr][which_side];
+    }
+    hasBeenFlipped = false;
+}
+
+yesButton.onclick = () => {
+    if (hasBeenFlipped) {
+        getNewCard();
+    }
+}
+
+noButton.onclick = () => {
+    if (hasBeenFlipped) {
+        getNewCard();
     }
 }
 
 flashcardBox.onclick = () => {
-    flipCard();
-    flashcardText.innerHTML = parsed_words[curr][which_side];
+    if (!hasStarted) {
+        flashcardText.innerHTML = parsed_words[curr][which_side];
+        hasStarted = true;
+    }
+    else if (!hasBeenFlipped) {
+        flipCard(); 
+        flashcardText.innerHTML = parsed_words[curr][which_side];
+        hasBeenFlipped = true;
+    }
 }
