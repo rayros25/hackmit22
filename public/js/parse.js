@@ -16,18 +16,7 @@ fileUploadForm.addEventListener('submit', (e) => {
 
     let words_from_file = "";
     file.text().then((result) => {
-        console.log(result);
-        words_from_file = result;
-        // we should probably do something else with the result too
-        console.log('wff', words_from_file)
-        // console.log('BRUH', words_from_file.split('	'))
-        console.log('BRUH', words_from_file.split('\r\n'))
-        const newlineRemoved = words_from_file.split('\r\n')
-        const tabRemoved = [];
-        newlineRemoved.forEach((w) => {
-            tabRemoved.push(w.split('\t'))
-        })
-        console.log(tabRemoved)
+        
     })  
     // parse(words_from_file, {
     //     delimiter: '    '
@@ -37,3 +26,17 @@ fileUploadForm.addEventListener('submit', (e) => {
 
     // console.log(big_mood)
 })
+
+const parse = (words_from_file) => {
+    // console.log(result);
+    // we should probably do something else with the result too
+    // console.log('wff', words_from_file)
+    // console.log('BRUH', words_from_file.split('	'))
+    console.log('BRUH', words_from_file.split('\r\n'))
+    const newlineRemoved = words_from_file.split('\r\n')
+    const tabRemoved = [];
+    newlineRemoved.forEach((w) => {
+        tabRemoved.push(w.split('\t'))
+    })
+    console.log(tabRemoved)
+}
