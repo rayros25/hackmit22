@@ -105,8 +105,8 @@ function cardCorrect() {
     console.log('user says: right')
     if (hasBeenFlipped) {
         cardsCorrect++;
-        // numItemsLeft--;
-        
+        numItemsLeft--;
+        flashcardBox.setAttribute("style", "border-color: #0094FF");
         updateGrowth();
         getNewCard();
     }
@@ -120,6 +120,7 @@ document.addEventListener("keydown", (e) => {
         console.log('user says: wrong')
         numItemsLeft--;
         if (hasBeenFlipped) {
+            flashcardBox.setAttribute("style", "border-color: #0094FF");
             getNewCard();
         }
     } else if (e.key === "k" || e.key === " " || e.key === "ArrowUp" ||
@@ -127,10 +128,12 @@ document.addEventListener("keydown", (e) => {
         if (!hasStarted) {
             flashcardText.innerHTML = parsed_words[curr][which_side];
             hasStarted = true;
+            
         }
         else if (!hasBeenFlipped) {
             flipCard(); 
             flashcardText.innerHTML = parsed_words[curr][which_side];
+            flashcardBox.setAttribute("style", "border-color: #5c9b1b");
             hasBeenFlipped = true;
         }
     }
@@ -139,17 +142,19 @@ document.addEventListener("keydown", (e) => {
 noButton.onclick = () => {
     numItemsLeft--;
     if (hasBeenFlipped) {
+        flashcardBox.setAttribute("style", "border-color: #0094FF");
         getNewCard();
     }
 }
 
 flashcardBox.onclick = () => {
     if (!hasStarted) {
-        flashcardText.innerHTML = parsed_words[curr][which_side];
+        // flashcardText.innerHTML = parsed_words[curr][which_side];
         hasStarted = true;
     }
     else if (!hasBeenFlipped) {
         flipCard(); 
+        flashcardBox.setAttribute("style", "border-color: #5c9b1b");
         flashcardText.innerHTML = parsed_words[curr][which_side];
         hasBeenFlipped = true;
     }

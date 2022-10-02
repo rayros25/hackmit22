@@ -80,12 +80,16 @@ button {
 	align: right;
 	background-color: #FF6550; /* Green */
 	color: black;
+    font-family: Gill Sans;
+    font-size: 20px;
 }
 
 .bt_y {
 	align: left;
 	background-color: #7DDE7B; /* Red */
 	color: black;
+    font-family: Gill Sans;
+    font-size: 20px;
 }
 
 .growth-img {
@@ -96,7 +100,9 @@ button {
     margin: 10px;
 }
 
-/* .btn-submit {
-    width: 100px;
+.btn-submit {
+    width: 150px;
     height: 50px;
-} */
+    font-family: Gill Sans;
+    font-size: 20px;
+}
