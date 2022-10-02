@@ -78,7 +78,7 @@ button {
 
 .bt_n {
 	align: right;
-	background-color: #FF6550; /* Green */
+	background-color: #FF6550; /* Red */
 	color: black;
     font-family: Gill Sans;
     font-size: 20px;
@@ -86,7 +86,7 @@ button {
 
 .bt_y {
 	align: left;
-	background-color: #7DDE7B; /* Red */
+	background-color: #7DDE7B; /* Green */
 	color: black;
     font-family: Gill Sans;
     font-size: 20px;
@@ -103,6 +103,11 @@ button {
 .btn-submit {
     width: 150px;
     height: 50px;
+    font-family: Gill Sans;
+    font-size: 20px;
+}
+
+#counter {
     font-family: Gill Sans;
     font-size: 20px;
 }

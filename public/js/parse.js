@@ -7,7 +7,7 @@ const flashcardText = document.getElementsByClassName('flashcard_content')[0];
 const flashcardBox = document.getElementsByClassName('flashcard')[0];
 
 const growthImage = document.querySelector(".growth-img");
-const counter = document.querySelector(".counter");
+const counter = document.querySelector("#counter");
 
 let parsed_words = [];
 let curr = 0;
@@ -192,9 +192,9 @@ function updateGrowth() {
         // if growth cycle completed, reset
         if ((currGrowthStage + 1) === numGrowthStages) {
             currGrowthStage = 0;
-            // numGrown++;
-            // counter.innerHTML = numGrown;
-            // console.log(numGrown);
+            numGrown++;
+            counter.textContent = numGrown;
+            console.log("numgrown:" + numGrown);
             setGrowthType();
             // setGrowthRate();
         } else {
