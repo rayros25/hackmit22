@@ -35,6 +35,10 @@ table {
   height: 80%;
 }
 
+th {
+	font-weight: normal;
+}
+
 button {
 	width: 200px;
 	height: 50px;
