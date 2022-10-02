@@ -28,11 +28,13 @@ const growthImgArrays = [flowerGrowth, houseGrowth, cakeGrowth, fishGrowth, bird
 
 const maxSteps = 15;
 const numGrowthStages = 5;
-let numItemsLeft;
+// let numItemsLeft;
 let cardsCorrect = 0;
-let growthRate;
+let growthRate = 3;
 let currGrowthStage = 0;
 let currGrowthType;
+let numGrown = 0;
+
 
 
 fileUploadForm.addEventListener('submit', async (e) => {
@@ -99,11 +101,11 @@ const getNewCard = () => {
 // }
 
 function cardCorrect() {
-    console.log("num items left: " + numItemsLeft);
+    // console.log("num items left: " + numItemsLeft);
     console.log('user says: right')
     if (hasBeenFlipped) {
         cardsCorrect++;
-        numItemsLeft--;
+        // numItemsLeft--;
         
         updateGrowth();
         getNewCard();
@@ -111,7 +113,7 @@ function cardCorrect() {
 }
 yesButton.addEventListener("click", cardCorrect);
 document.addEventListener("keydown", (e) => {
-    if (e.key === "k" || e.key === "ArrowRight") {
+    if (e.key === "l" || e.key === "ArrowRight") {
         cardCorrect();
     }
     else if (e.key === "j" || e.key === "ArrowLeft") {
@@ -119,6 +121,17 @@ document.addEventListener("keydown", (e) => {
         numItemsLeft--;
         if (hasBeenFlipped) {
             getNewCard();
+        }
+    } else if (e.key === "k" || e.key === " " || e.key === "ArrowUp" ||
+               e.key === "ArrowDown") {
+        if (!hasStarted) {
+            flashcardText.innerHTML = parsed_words[curr][which_side];
+            hasStarted = true;
+        }
+        else if (!hasBeenFlipped) {
+            flipCard(); 
+            flashcardText.innerHTML = parsed_words[curr][which_side];
+            hasBeenFlipped = true;
         }
     }
 });
@@ -148,15 +161,15 @@ function setGrowthType() {
     currGrowthType = Math.floor(Math.random() * growthImgArrays.length);
 }
 
-function setGrowthRate() {
-    if (numItemsLeft < maxSteps) {
-        // number of items market correct required to grow becomes
-        // items / 5
-        growthRate = Math.floor(numItemsLeft / numGrowthStages) + 1;
-    } else {
-        growthRate = 3;
-    }
-}
+// function setGrowthRate() {
+//     if (numItemsLeft < maxSteps) {
+//         // number of items market correct required to grow becomes
+//         // items / 5
+//         growthRate = Math.floor(numItemsLeft / numGrowthStages) + 1;
+//     } else {
+//         growthRate = 3;
+//     }
+// }
 
 function updateGrowth() {
     // set start image after a growth cycle has been completed
@@ -173,8 +186,9 @@ function updateGrowth() {
         // if growth cycle completed, reset
         if ((currGrowthStage + 1) === numGrowthStages) {
             currGrowthStage = 0;
+            numGrown++;
             setGrowthType();
-            setGrowthRate();
+            // setGrowthRate();
         } else {
             currGrowthStage++;
         }
@@ -186,4 +200,4 @@ function updateGrowth() {
 }
 
 setGrowthType();
-setGrowthRate();
+// setGrowthRate();
