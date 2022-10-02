@@ -23,20 +23,26 @@ border-radius: 36px;
 }
 
 span {
-  display: table-cell;
-  vertical-align: middle;
+  
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   line-height: normal;
 }
 
 table {
-  border-style: solid;
-  border-color: black;
+  
   width: 60%;
   height: 80%;
 }
 
 th {
 	font-weight: normal;
+}
+
+.tg-0pky {
+	text-align: center;
 }
 
 button {
@@ -53,6 +59,8 @@ button {
 
 .star {
 	align: center;
+	width: 30px;
+	height: 30px;
 }
 
 .bt_n {
